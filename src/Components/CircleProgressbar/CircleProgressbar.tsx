@@ -55,19 +55,17 @@ const CircleProgressbar: React.FunctionComponent<CircleProgressbarProps> = ({
         >
           <defs>
             <linearGradient id="GradientColor">
-              <stop offset="0%" stopColor={`${primaryColors[0]}`} />
-              <stop offset="100%" stopColor={`${primaryColors[1]}`} />
               {primaryColors.reverse().map((item, index) => (
                 <stop
                   key={item}
                   offset={
                     index === 0
                       ? "0%"
-                      : index === primaryColors.length
+                      : index === primaryColors.length - 1
                       ? "100%"
-                      : primaryColors.length / index
+                      : 100 / index
                   }
-                  stopColor={`${primaryColors[0]}`}
+                  stopColor={`${item}`}
                 />
               ))}
             </linearGradient>
