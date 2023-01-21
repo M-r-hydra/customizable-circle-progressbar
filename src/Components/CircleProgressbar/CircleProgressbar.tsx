@@ -25,10 +25,8 @@ const CircleProgressbar: React.FunctionComponent<CircleProgressbarProps> = ({
   const circleRef = React.createRef<any>();
   useEffect(() => {
     const timeOut = setTimeout(() => {
-      console.log(
-        (circleRef.current.children[1].style.strokeDashoffset =
-          100 - progressValue)
-      );
+      circleRef.current.children[1].style.strokeDashoffset =
+        200 * (100 - progressValue) * 0.01;
     }, 200);
     return () => {
       clearTimeout(timeOut);
@@ -72,13 +70,12 @@ const CircleProgressbar: React.FunctionComponent<CircleProgressbarProps> = ({
                   stopColor={`${primaryColors[0]}`}
                 />
               ))}
-              <stop />
             </linearGradient>
           </defs>
           <circle
-            cx={width / 2.5 - 2}
-            cy={width / 2.5 - 2}
-            r={width / 2.5 - 2}
+            cx={width / 2.85 + 8}
+            cy={width / 2.85 + 8}
+            r={width / 2.85 - strokeSize - 4}
             data-test={progressValue}
             strokeLinecap="round"
             strokeWidth={strokeSize}
