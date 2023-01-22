@@ -10,7 +10,7 @@ const App = () => {
     <div>
       <CircleProgressbar
         fontColor="red"
-        innerHtml={<>Test</>}
+        innerHtml={<></>}
         primaryColors={["red", "blue", "green"]}
         progressValue={100}
         strokeSize={6}
