@@ -32,6 +32,10 @@ const CircleProgressbar: React.FunctionComponent<CircleProgressbarProps> = ({
       clearTimeout(timeOut);
     };
   }, [circleRef, progressValue]);
+  const copyOfPrimaryolors = [...primaryColors];
+  copyOfPrimaryolors.pop();
+  copyOfPrimaryolors.shift();
+
   return (
     <>
       <div
@@ -57,17 +61,17 @@ const CircleProgressbar: React.FunctionComponent<CircleProgressbarProps> = ({
             <linearGradient id="GradientColor">
               {primaryColors.reverse().map((item, index) => (
                 <stop
-                  key={item}
-                  offset={
-                    index === 0
-                      ? "0%"
-                      : index === primaryColors.length - 1
-                      ? "100%"
-                      : 100 / index
-                  }
-                  stopColor={`${item}`}
+                  offset={((): string => {
+                    if (index === 0) return "0%";
+                    else if (index === primaryColors.length - 1) return "100%";
+                    else {
+                      return 100 / (index + 1) + "%";
+                    }
+                  })()}
+                  stopColor={item}
                 />
               ))}
+              {}
             </linearGradient>
           </defs>
           <circle
